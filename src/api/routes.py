@@ -43,12 +43,12 @@ def handle_login():
     body_password = hashlib.sha256(body['password'].encode("utf-8")).hexdigest()
     user = User.query.filter_by(email = body_email).first()
     if user and user.password == body_password:
-        access_token = create_access_token(idenity = user.email)
-        return jsonify(access_token = access_token), 200
+        access_token = create_access_token(identity = user.email)
+        return jsonify(access_token = access_token, user = user), 200
     else:
         return jsonify("User not found"), 400
     
-@api.route('/user', methods=['GET'])
+@api.route('/private', methods=['GET'])
 @jwt_required()
 def handle_get_user():
     user_email = get_jwt_identity()
