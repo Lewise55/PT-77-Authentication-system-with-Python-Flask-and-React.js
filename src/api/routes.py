@@ -44,7 +44,7 @@ def handle_login():
     user = User.query.filter_by(email = body_email).first()
     if user and user.password == body_password:
         access_token = create_access_token(identity = user.email)
-        return jsonify(access_token = access_token, user = user), 200
+        return jsonify(access_token = access_token, user = user.serialize()), 200
     else:
         return jsonify("User not found"), 400
     
@@ -53,4 +53,4 @@ def handle_login():
 def handle_get_user():
     user_email = get_jwt_identity()
     user = User.query.filter_by(email = user_email).first()
-    return jsonify(user), 200
+    return jsonify( user.serialize()), 200
