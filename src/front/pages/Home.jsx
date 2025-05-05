@@ -49,7 +49,7 @@ export const Home = () => {
 					</span>
 				)}
 			</div>
-			<Link to={"/profile"}>Look at your Profile</Link>
+			<Link to={"/profile"}>Look at your profile</Link>
 		</div>
 	);
 }; 

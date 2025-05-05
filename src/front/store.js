@@ -14,7 +14,7 @@ export const initialStore=()=>{
       }
     ],
     user: null,
-    access_token: null
+    access_token: sessionStorage.getItem('access_token')
   }
 }
 
@@ -39,12 +39,14 @@ export default function storeReducer(store, action = {}) {
 
       const { user,  access_token } = action.payload
 
+      sessionStorage.setItem('access_token', access_token);
+
       return {
         ...store,
         user: user, 
         access_token: access_token
       };
-
+      
     default:
       throw Error('Unknown action.');
   }    

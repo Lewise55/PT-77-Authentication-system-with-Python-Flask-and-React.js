@@ -10,11 +10,12 @@ export const Login = () => {
 
         const handleLogin= () => {
             login(user)
-            navigate("/profile")
+            navigate("/")
         }
 
     return (
         <div className="text-center mt-5 w-50 mx-auto">
+            <h1>Login</h1>
             <div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="inputGroup-sizing-default">Email</span>

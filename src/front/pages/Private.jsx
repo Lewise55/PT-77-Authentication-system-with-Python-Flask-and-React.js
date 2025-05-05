@@ -8,13 +8,19 @@ export const Private = () => {
 
     useEffect(() => {
         getUser(store.access_token)
-        console.log(store.user);
+    },[])
+
+    useEffect(() => {
+        const email = user.email;
         if(store.user == null) {
             setMessage("YOU MUST LOGIN FIRST")
-        } else {
+        } 
+        else {
             setMessage(`Hello ${store.user.email}` )
         }
-    }, [])
+    }, [store.user])
+
+    
 
     return (
         <div className="text-center mt-5">
