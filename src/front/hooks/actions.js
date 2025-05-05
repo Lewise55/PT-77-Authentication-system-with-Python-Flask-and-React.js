@@ -40,8 +40,14 @@ export const getUser = async (dispatch, payload) => {
     );
     let data = await response.json();
 
+    // error handling
+    if (!response.ok) {
+        // If token is invalid, remove it and reset state
+        throw new Error("Invalid or expired token");
+    }
+
     dispatch({
         type: "set_user",
         payload: {user: data.user, access_token: payload}
     });
-}
+};
